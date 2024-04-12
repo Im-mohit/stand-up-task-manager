@@ -1,0 +1,16 @@
+.rightHalfContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskName {
+  font-size: calc(4vw + 3vh); /* Adjust font size for task name */
+  font-weight: bold; /* Make task name bold for emphasis */
+}
+
+.timer {
+  font-size: calc(8vw + 5vh); /* Adjust font size for timer */
+  font-weight: bold; /* Make task name bold for emphasis */
+}
