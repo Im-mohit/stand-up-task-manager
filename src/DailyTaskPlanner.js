@@ -2,16 +2,16 @@ import { useState } from 'react';
 import TaskList from './components/taskList';
 import Timer from './components/timer';
 import TaskCard from './components/taskCard';
-export default function DailyTaskPlaner() {
 
-    const defaultTime = '00:00'; // Set a default timer value
+export default function DailyTaskPlanner() {
+    const defaultTime = '00:00:00';
     const newTask = {
-       name: 'New Task', // Default task name
-       timer: defaultTime // Default timer value
+       name: 'New Task',
+       timer: defaultTime,
+       status: 'NOT_CREATED'
     };
     const [currentTask, setCurrentTask] = useState(newTask);
     const [taskList, setTaskList] = useState([]);
-
 
     function updateTask(index, task) {
         const updatedTaskList = [...taskList];
@@ -20,7 +20,6 @@ export default function DailyTaskPlaner() {
     }
 
     function updateCurrentTask(task) {
-        console.log("Updated current task");
         setCurrentTask(task);
     }
 
@@ -31,22 +30,28 @@ export default function DailyTaskPlaner() {
 
     function removeTask(index) {
         const updatedTaskList = taskList.filter((_, i) => i !== index);
-        console.log(updatedTaskList);
         setTaskList(updatedTaskList);
     }
-
 
     return (
         <div className="container">
             <div className="leftHalf">
-                <TaskList updateTasks={updateTask} updateCurrentTask={updateCurrentTask} addTask={addTask} taskList={taskList} removeTask={removeTask} />
+                <TaskList
+                    updateTasks={updateTask}
+                    updateCurrentTask={updateCurrentTask}
+                    addTask={addTask}
+                    taskList={taskList}
+                    removeTask={removeTask}
+                />
             </div>
             <div className="rightHalf">
                 <div className="rightHalfContent">
-                <Timer task={currentTask} />
+                    <Timer
+                        task={currentTask}
+                        updateTask = {updateCurrentTask}
+                    />
                 </div>
             </div>
         </div>
     );
-
 }

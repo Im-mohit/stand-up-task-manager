@@ -11,6 +11,32 @@
 }
 
 .timer {
-  font-size: calc(8vw + 5vh); /* Adjust font size for timer */
+  font-size: calc(8vw + 2vh); /* Adjust font size for timer */
   font-weight: bold; /* Make task name bold for emphasis */
+}
+
+
+.pause-button {
+  background-color: #dc3545; /* Red background for Pause */
+  border-color:#dc3545;
+
+}
+
+.resume-button {
+  background-color: #28a745; /* Green background for Resume */
+  border-color:#28a745;
+}
+
+.timer-button {
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-width:5px;
+}
+
+.timer-button:hover {
+  opacity: 0.8; /* Reduce opacity on hover */
 }

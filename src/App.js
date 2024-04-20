@@ -1,12 +1,21 @@
 // App.js
 import React from 'react';
 import DailyTaskPlanner from './DailyTaskPlanner';
+import './App.css'; // Import the CSS file for styling
 
 const App = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <body>
+      <header>
+        <h1>Daily Task Planner</h1>
+      </header>
+      <main>
         <DailyTaskPlanner />
-    </div>
+      </main>
+      <footer>
+        <p>© 2024 Daily Task Planner. All rights reserved.</p>
+      </footer>
+    </body>
   );
 };
 

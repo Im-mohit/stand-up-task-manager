@@ -6,16 +6,15 @@ import Timer from './timer';
 
 const TaskList = ({ updateTasks, updateCurrentTask, addTask, removeTask, taskList }) => { // Destructuring props properly
 
-  const [startedTasks, setStartedTasks] = useState([]);
   const [isCreatingTask, setIsCreatingTask] = useState(false);
 
   console.log("TaskList received taskList:", taskList);
 
   const createTask = () => {
-     const defaultTime = '00:00'; // Set a default timer value
+     const defaultTime = '00:00:00'; // Set a default timer value
       const newTask = {
         id: taskList.length,
-        name: 'Newask', // Default task name
+        name: 'New Task', // Default task name
         timer: defaultTime // Default timer value
       };
       setIsCreatingTask(true);
@@ -27,9 +26,9 @@ const TaskList = ({ updateTasks, updateCurrentTask, addTask, removeTask, taskLis
     removeTask(index);
   }
 
-    const startTask = (task) => {
+    const startTask = (index, task) => {
       // Add the task to the list of started tasks
-      setStartedTasks([...startedTasks, task]);
+      updateTasks(index, task);
       updateCurrentTask(task);
     };
 
@@ -40,13 +39,20 @@ const TaskList = ({ updateTasks, updateCurrentTask, addTask, removeTask, taskLis
 
   const generateTaskListFile = () => {
   // Create a plain text content from the started tasks
-  console.log(startedTasks);
-  const prevTasks = startedTasks
-    .map((task, index) => `${index + 1}. ${task.name}`) // Format task names as bullets
-    .join('\n'); // Join the tasks with new lines
+  const prevTasks = taskList
+     .filter(task => task.status === "STARTED" || task.status === "COMPLETED") // Filter tasks by status
+     .map(task => {
+      if (task.status === "COMPLETED") {
+        return `- [Completed] ${task.name}`;
+      } else {
+        return `- ${task.name}`;
+      }
+    }).join('\n');
+
   const planTasks = taskList
-    .map((task, index) => `${index + 1}. ${task.name}`) // Format task names as bullets
-    .join('\n'); // Join the tasks with new lines
+       .filter(task => task.status !== "COMPLETED") // Filter tasks by status
+       .map(task => `- ${task.name}`) // Format task names as bullets
+       .join('\n');
 
   const fileContent = `Prev :\n${prevTasks}\n\nPlan for today :\n${planTasks}`;
 
@@ -65,21 +71,18 @@ const TaskList = ({ updateTasks, updateCurrentTask, addTask, removeTask, taskLis
   return (
     <div style={{ position: 'relative'}}>
       {taskList.map((task, index) => (
+        task.status !== 'COMPLETED' && (
         <div>
-            <TaskCard updateTaskCard={updateTask} key={task.id} index={index} task={task} onStart={startTask} remove={deleteTask} />
+            <TaskCard updateTaskCard={updateTask} key={task.id} index={index} task={task} onStart={startTask} remove={deleteTask}/>
         </div>
-      ))}
+        )))}
       <button
-            style={{
-              position: 'fixed', // Fixed positioning
-              top: '1%', // Adjust vertical position
-              left: '1%', // Adjust horizontal position
-            }}
+            className = "lets-create-task-button"
             onClick={createTask}
             disabled={isCreatingTask}>
-            Lets Create Task
+            Create Task
     </button>
-    <button onClick={generateTaskListFile}>Generate Task List File</button>
+    <button className = "generate-task-file" onClick={generateTaskListFile}>Generate Standup Updates</button>
     </div>
   );
 };
