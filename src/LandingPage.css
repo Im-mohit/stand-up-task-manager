@@ -1,0 +1,29 @@
+/* LandingPage.css */
+
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Landing page styles */
+.container {
+  padding: 20px;
+}
+
+.grid-item {
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-item {
+    order: 2;
+  }
+}
