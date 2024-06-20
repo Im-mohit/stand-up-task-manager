@@ -19,13 +19,18 @@ main {
   overflow: hidden;
 }
 
-/* Footer styles */
-footer {
-  background-color: #f8f9fa;
-  padding: 10px 20px;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-  flex-direction: column;
-  overflow: hidden;
+.footer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin : 30px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-nav a {
+  margin: 0 10px;
+  color: #333;
+  text-decoration: none;
 }
