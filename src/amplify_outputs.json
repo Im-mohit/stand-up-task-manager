@@ -1,6 +1,13 @@
 {
   "version": "1",
   "auth": {
+    "cookieStorage": {
+      "domain": ".leanlyf.com",
+      "path": "/",
+      "expires": 365,
+      "secure": true,
+      "sameSite": "strict"
+    },
     "user_pool_id": "ap-south-1_fAMrLFaIb",
     "aws_region": "ap-south-1",
     "user_pool_client_id": "22pe4uk24jmkt3ik1st0uutpc2",
