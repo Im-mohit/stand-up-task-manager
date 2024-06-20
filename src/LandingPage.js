@@ -20,10 +20,6 @@ const features = [
   // Add more features as needed
 ];
 
-const userData = await fetchUserAttributes();
-
-console.log("username", userData);
-
 const LandingPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
