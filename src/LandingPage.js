@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Typography, Container, Grid } from '@mui/material';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -29,11 +29,9 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
-        const currentUser = await Auth.currentAuthenticatedUser();
+        const currentUser = await getCurrentUser();
         setUser(currentUser);
-        console.log("username", currentUser.username);
-        console.log("user id", currentUser.attributes.sub);
-        console.log("sign-in details", currentUser.signInUserSession);
+        console.log("username", currentUser);
       } catch (error) {
         console.log('User not authenticated', error);
       }
