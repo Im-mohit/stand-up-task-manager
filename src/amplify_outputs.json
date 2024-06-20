@@ -6,7 +6,7 @@
       "path": "/",
       "expires": 365,
       "secure": true,
-      "sameSite": "strict"
+      "sameSite": "none"
     },
     "user_pool_id": "ap-south-1_fAMrLFaIb",
     "aws_region": "ap-south-1",
