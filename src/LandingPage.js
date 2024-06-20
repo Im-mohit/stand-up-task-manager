@@ -21,12 +21,27 @@ const features = [
   // Add more features as needed
 ];
 
-const { username, userId, signInDetails } = await getCurrentUser();
-console.log("username", username);
-console.log("user id", userId);
-console.log("sign-in details", signInDetails);
+
 
 const LandingPage = () => {
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const currentUser = await Auth.currentAuthenticatedUser();
+        setUser(currentUser);
+        console.log("username", currentUser.username);
+        console.log("user id", currentUser.attributes.sub);
+        console.log("sign-in details", currentUser.signInUserSession);
+      } catch (error) {
+        console.log('User not authenticated', error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const redirectToTaskPlanner = () => {
