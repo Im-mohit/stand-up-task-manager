@@ -5,9 +5,22 @@ import DailyTaskPlanner from './DailyTaskPlanner';
 import './App.css'; // Import the CSS file for styling
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Amplify } from 'aws-amplify';
+import { CookieStorage } from 'aws-amplify/utils';
+import { cognitoUserPoolsTokenProvider } from 'aws-amplify/auth/cognito';
 import outputs from './amplify_outputs.json';
 
 Amplify.configure(outputs);
+
+const cookieStorage = new CookieStorage({
+    domain: ".leanlyf.com",
+    path: "/",
+    sameSite: "none",
+    secure: true,
+    expires: 365,
+});
+
+
+cognitoUserPoolsTokenProvider.setKeyValueStorage(cookieStorage);
 
 const App = () => {
   return (
