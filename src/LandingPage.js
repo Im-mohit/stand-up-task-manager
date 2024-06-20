@@ -9,6 +9,7 @@ import Header from './common/Header';
 import outputs from './amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
 import { fetchUserAttributes } from 'aws-amplify/auth';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 Amplify.configure(outputs);
 
@@ -20,9 +21,10 @@ const features = [
   // Add more features as needed
 ];
 
-const userData = await fetchUserAttributes();
-console.log("username", userData);
-
+const { username, userId, signInDetails } = await getCurrentUser();
+console.log("username", username);
+console.log("user id", userId);
+console.log("sign-in details", signInDetails);
 
 const LandingPage = () => {
   const navigate = useNavigate();
