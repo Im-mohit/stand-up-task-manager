@@ -1,13 +1,6 @@
 {
   "version": "1",
   "auth": {
-    "cookieStorage": {
-      "domain": ".leanlyf.com",
-      "path": "/",
-      "expires": 365,
-      "secure": true,
-      "sameSite": "none"
-    },
     "user_pool_id": "ap-south-1_fAMrLFaIb",
     "aws_region": "ap-south-1",
     "user_pool_client_id": "22pe4uk24jmkt3ik1st0uutpc2",
@@ -33,12 +26,10 @@
         "GOOGLE"
       ],
       "redirect_sign_in_uri": [
-        "http://localhost:3002",
         "http://localhost:3001",
         "https://www.standupmate.leanlyf.com"
       ],
       "redirect_sign_out_uri": [
-        "http://localhost:3002",
         "http://localhost:3001",
         "https://www.standupmate.leanlyf.com"
       ],

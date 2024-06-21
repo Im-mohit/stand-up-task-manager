@@ -32,12 +32,10 @@ backend.addOutput({
                 "GOOGLE"
             ],
             redirect_sign_in_uri: [
-            "http://localhost:3002",
             "http://localhost:3001",
             "https://www.standupmate.leanlyf.com"
             ],
             redirect_sign_out_uri: [
-            "http://localhost:3002",
             "http://localhost:3001",
             "https://www.standupmate.leanlyf.com"
             ],

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TaskList from './components/taskList';
 import Timer from './components/timer';
 import TaskCard from './components/taskCard';
+import Header from './common/Header';
 
 export default function DailyTaskPlanner() {
     const defaultTime = '00:00:00';
@@ -35,6 +36,7 @@ export default function DailyTaskPlanner() {
 
     return (
         <div className="container">
+            <Header />
             <div className="leftHalf">
                 <TaskList
                     updateTasks={updateTask}

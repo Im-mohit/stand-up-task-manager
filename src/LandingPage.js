@@ -9,7 +9,7 @@ import Header from './common/Header';
 import outputs from './amplify_outputs.json';
 import { Amplify } from 'aws-amplify';
 import { fetchUserAttributes } from 'aws-amplify/auth';
-import { getCurrentUser } from 'aws-amplify/auth';
+import { getCurrentUser, signInWithRedirect } from 'aws-amplify/auth';
 
 Amplify.configure(outputs);
 
@@ -42,9 +42,17 @@ const LandingPage = () => {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const redirectToTaskPlanner = () => {
-    setLoading(true);
-    navigate('/task-planner');
+  const redirectToTaskPlanner = async () => {
+      try {
+        if (user) {
+          setLoading(true);
+          navigate('/task-planner');
+        } else {
+          await signInWithRedirect({provider: 'Google'}); // Show sign-in option
+        }
+      } catch {
+        await signInWithRedirect({provider: 'Google'}); // Show sign-in option
+      }
   };
 
   const settings = {
@@ -77,7 +85,7 @@ const LandingPage = () => {
             Effortlessly manage tasks, collaborate with your team, and achieve more together.
           </Typography>
           <Button variant="contained" color="primary" size="large" onClick={redirectToTaskPlanner} disabled={loading}>
-            {loading ? 'Loading...' : 'Signup to get started'}
+            {user ? 'Get Started' : 'Signup to get started'}
           </Button>
         </Grid>
         <Grid item xs={12} md={6}>

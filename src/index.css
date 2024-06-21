@@ -16,6 +16,7 @@ code {
     width: 100%;
     height: 84vh; /* Full height of the viewport */
     overflow: hidden; /* Prevent container from being scrollable */
+    margin-top : 100px;
 }
 
 .leftHalf, .rightHalf {
