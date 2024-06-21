@@ -33,10 +33,14 @@ backend.addOutput({
             ],
             redirect_sign_in_uri: [
             "http://localhost:3001",
+            "http://localhost:3000",
+            "https://www.leanlyf.com",
             "https://www.standupmate.leanlyf.com"
             ],
             redirect_sign_out_uri: [
             "http://localhost:3001",
+            "http://localhost:3000",
+            "https://www.leanlyf.com",
             "https://www.standupmate.leanlyf.com"
             ],
             response_type: "code",
